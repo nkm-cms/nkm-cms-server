@@ -1,5 +1,5 @@
 {
-  "name": "nkm-server-ts",
+  "name": "nkm-cms",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -8,8 +8,9 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-nkm-server-ts",
-    "stop": "egg-scripts stop --title=egg-server-nkm-server-ts",
+    "bootstrap:test": "yarn --registry=https://registry.npmjs.org && yarn start",
+    "start": "egg-scripts start --daemon --title=egg-server-nkm-cms --port=3101",
+    "stop": "egg-scripts stop --title=egg-server-nkm-cms",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test-local": "egg-bin test",
