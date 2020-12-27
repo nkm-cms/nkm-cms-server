@@ -8,7 +8,6 @@ interface CreateOption {
   status?: number;
   categoryId: number;
   thumbnail: string;
-  images: string;
 }
 
 export default class Article extends Service {
@@ -21,7 +20,7 @@ export default class Article extends Service {
     return article
   }
 
-  public async save({ id, content, title, status = 1, categoryId, thumbnail, images }: CreateOption) {
+  public async save({ id, content, title, status = 1, categoryId, thumbnail }: CreateOption) {
     const { ctx } = this
 
     const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
@@ -44,7 +43,6 @@ export default class Article extends Service {
       category_id: categoryId,
       user_id: userId,
       thumbnail,
-      images,
       create_time: Date.now()
     }
 
