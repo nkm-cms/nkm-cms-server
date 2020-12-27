@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 27/12/2020 14:12:39
+ Date: 27/12/2020 15:56:03
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `nkm_article` (
 -- Records of nkm_article
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_article` VALUES (1, '关于nkm-cms内容管理系统的介绍', '', '<p style=\"text-align:center\"><strong style=\"font-size:18px\">nkm-cms内容管理系统基础框架</strong></p><p style=\"text-align:center;font-size:14px\">作者：轩陌</p><p style=\"text-align:left;text-indent:1em;font-size:14px\">在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这块一直没有找到一个比较好用的，CKEditor比较重，UEditor官方不维护，各种原因不爽，其他的也有做尝试，但是感觉并不是自己想要的，后边有了解到textbus这个编辑器，也就是现在的这个，尝试了一下还不错，暂时先用着，目前暂时没有发现什么特别大的问题。</p><p style=\"text-align:left;text-indent:1em;font-size:14px\">关于这套内容管理系统的后续还需要开发的功能有：站点设置、文章内容里上传的图片做未使用的删除功能、文章增加版本历史记录、文章关联到用户权限、前端展示页面如果有好的设计会做一版对应的博客，嗯，目前就这个打算。<br></p><p style=\"text-align:left;text-indent:1em;font-size:14px\">nkm的命名由来：n取的是nodejs的首字母，k是取的koa2的首字母，m取的是mysql的首字母，所以就有了<u><strong>nkm-admin</strong></u>、<u><strong>nkm-cms</strong></u>的命名，目前几个仓库的介绍如下：</p><table><tbody><tr><td>仓库名<br></td><td>介绍<br></td><td>仓库地址<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-server-ts</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统</span>基础框架（服务端），使用Eggjs重构的后端，技术栈：Eggjs+mysql+redis<br></td><td>https://github.com/nkm-admin/nkm-server-ts<br></td></tr><tr><td>nkm-web<br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统基础</span>框架（前端），技术栈：Vuejs+Element-UI<br></td><td>https://github.com/nkm-admin/nkm-web<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-cms-server</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">基于nkm-server-ts实现的内容管理系统（服务端），目前只开发了栏目管理、文章管理，后续的功能还在开发中</span><br></td><td><br></td></tr><tr><td>nkm-cms-web<br></td><td>基于nkm-web实现的内容管理系统（前端）<br></td><td><br></td></tr><tr><td>nkm-web-template<br></td><td>前端的基础模版，不带任何权限<br></td><td>https://github.com/nkm-admin/nkm-web-template<br></td></tr></tbody></table><p><br></p><p><br></p>', '', 1, 1, 1, 1608724009836, 0);
+INSERT INTO `nkm_article` VALUES (1, '关于nkm-cms内容管理系统的介绍', '', '<p style=\"text-align:center\"><strong style=\"font-size:18px\">nkm-cms内容管理系统基础框架</strong></p><p style=\"text-align:center;font-size:14px\">作者：轩陌</p><p style=\"text-align:left;text-indent:1em;font-size:14px\">在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这块一直没有找到一个比较好用的，CKEditor比较重，UEditor官方不维护，各种原因不爽，其他的也有做尝试，但是感觉并不是自己想要的，后边有了解到textbus这个编辑器，也就是现在的这个，尝试了一下还不错，暂时先用着，目前暂时没有发现什么特别大的问题。</p><p style=\"text-align:left;text-indent:1em;font-size:14px\">关于这套内容管理系统的后续还需要开发的功能有：站点设置、文章内容里上传的图片做未使用的删除功能、文章增加版本历史记录、文章关联到用户权限、前端展示页面如果有好的设计会做一版对应的博客，嗯，目前就这个打算。<br></p><p style=\"text-align:left;text-indent:1em;font-size:14px\">nkm的命名由来：n取的是nodejs的首字母，k是取的koa2的首字母，m取的是mysql的首字母，所以就有了<strong><u>nkm-admin</u></strong>、<strong><u>nkm-cms</u></strong>的命名，目前几个仓库的介绍如下：</p><table><tbody><tr><td>仓库名<br></td><td>介绍<br></td><td>仓库地址<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-server-ts</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统</span>基础框架（服务端），使用Eggjs重构的后端，技术栈：Eggjs+mysql+redis<br></td><td>https://github.com/nkm-admin/nkm-server-ts<br></td></tr><tr><td>nkm-web<br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统基础</span>框架（前端），技术栈：Vuejs+Element-UI<br></td><td>https://github.com/nkm-admin/nkm-web<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-cms-server</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">基于nkm-server-ts实现的内容管理系统（服务端），目前只开发了栏目管理、文章管理，后续的功能还在开发中</span><br></td><td>https://github.com/nkm-admin/nkm-cms-server<br></td></tr><tr><td>nkm-cms-web<br></td><td>基于nkm-web实现的内容管理系统（前端）<br></td><td>https://github.com/nkm-admin/nkm-cms<br></td></tr><tr><td>nkm-web-template<br></td><td>前端的基础模版，不带任何权限<br></td><td>https://github.com/nkm-admin/nkm-web-template<br></td></tr></tbody></table><p><br></p><p><br></p>', '', 1, 1, 1, 1608724009836, 0);
 COMMIT;
 
 -- ----------------------------
@@ -114,7 +114,7 @@ CREATE TABLE `nkm_resource` (
   `create_time` bigint unsigned NOT NULL,
   `is_deleted` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_resource
@@ -127,20 +127,27 @@ INSERT INTO `nkm_resource` VALUES (4, 'system:role', '角色管理', 'system:res
 INSERT INTO `nkm_resource` VALUES (5, 'dashboard', '仪表盘', 'system:resource:menu', 0, '', 'el-icon-odometer', 0, '/dashboard', 1, 1566136292367, 0);
 INSERT INTO `nkm_resource` VALUES (6, 'personal:center', '个人中心', 'system:resource:menu', 0, '', 'el-icon-user', 1, '/personal-center', 1, 1566220196928, 0);
 INSERT INTO `nkm_resource` VALUES (7, 'system:dictionary', '数据字典', 'system:resource:menu', 1, '', 'el-icon-notebook-1', 3, '/system/dictionary', 1, 1567432900204, 0);
-INSERT INTO `nkm_resource` VALUES (8, 'system:user:api:list', '列表', 'system:resource:api', 2, '', '', 0, '/api/nkm-admin/system/user/list', 1, 1592301197531, 0);
-INSERT INTO `nkm_resource` VALUES (9, 'system:user:api:registered', '用户注册', 'system:resource:api', 2, '', '', 0, '/api/nkm-admin/system/user/registered', 1, 1592301311815, 0);
-INSERT INTO `nkm_resource` VALUES (10, 'system:user:api:del', '用户删除', 'system:resource:api', 2, '', '', 0, '/api/nkm-admin/system/user/del', 1, 1592301366303, 0);
-INSERT INTO `nkm_resource` VALUES (11, 'system:user:api:modify-role', '修改角色', 'system:resource:api', 2, '', '', 0, '/api/nkm-admin/system/user/modify-role', 1, 1592313728482, 0);
-INSERT INTO `nkm_resource` VALUES (12, 'system:user:api:reset-pwd', '重置密码', 'system:resource:api', 2, '', '', 0, '/api/nkm-admin/system/user/reset-password', 1, 1592313846476, 0);
-INSERT INTO `nkm_resource` VALUES (13, 'system:resource:api:save', '资源保存', 'system:resource:api', 3, '', '', 0, '/api/nkm-admin/system/resource/save', 1, 1592314794775, 0);
-INSERT INTO `nkm_resource` VALUES (14, 'system:resource:api:del', '资源删除', 'system:resource:api', 3, '', '', 0, '/api/nkm-admin/system/resource/del', 1, 1592314948240, 0);
-INSERT INTO `nkm_resource` VALUES (15, 'system:role:api:save', '角色保存', 'system:resource:api', 4, '', '', 0, '/api/nkm-admin/system/role/save', 1, 1592315164331, 0);
-INSERT INTO `nkm_resource` VALUES (16, 'system:role:api:del', '角色删除', 'system:resource:api', 4, '', '', 0, '/api/nkm-admin/system/role/del', 1, 1592315817575, 0);
-INSERT INTO `nkm_resource` VALUES (17, 'system:dict:api:save', '字典保存', 'system:resource:api', 7, '', '', 0, '/api/nkm-admin/system/dictionary/save', 1, 1592315866661, 0);
-INSERT INTO `nkm_resource` VALUES (18, 'system:dict:api:del', '字典删除', 'system:resource:api', 7, '', '', 0, '/api/nkm-admin/system/dictionary/del', 1, 1592315899190, 0);
+INSERT INTO `nkm_resource` VALUES (8, 'system:user:api:list', '列表', 'system:resource:api', 2, '', '', 0, '/api/nkm-cms/system/user/list', 1, 1592301197531, 0);
+INSERT INTO `nkm_resource` VALUES (9, 'system:user:api:registered', '用户注册', 'system:resource:api', 2, '', '', 0, '/api/nkm-cms/system/user/registered', 1, 1592301311815, 0);
+INSERT INTO `nkm_resource` VALUES (10, 'system:user:api:del', '用户删除', 'system:resource:api', 2, '', '', 0, '/api/nkm-cms/system/user/del', 1, 1592301366303, 0);
+INSERT INTO `nkm_resource` VALUES (11, 'system:user:api:modify-role', '修改角色', 'system:resource:api', 2, '', '', 0, '/api/nkm-cms/system/user/modify-role', 1, 1592313728482, 0);
+INSERT INTO `nkm_resource` VALUES (12, 'system:user:api:reset-pwd', '重置密码', 'system:resource:api', 2, '', '', 0, '/api/nkm-cms/system/user/reset-password', 1, 1592313846476, 0);
+INSERT INTO `nkm_resource` VALUES (13, 'system:resource:api:save', '资源保存', 'system:resource:api', 3, '', '', 0, '/api/nkm-cms/system/resource/save', 1, 1592314794775, 0);
+INSERT INTO `nkm_resource` VALUES (14, 'system:resource:api:del', '资源删除', 'system:resource:api', 3, '', '', 0, '/api/nkm-cms/system/resource/del', 1, 1592314948240, 0);
+INSERT INTO `nkm_resource` VALUES (15, 'system:role:api:save', '角色保存', 'system:resource:api', 4, '', '', 0, '/api/nkm-cms/system/role/save', 1, 1592315164331, 0);
+INSERT INTO `nkm_resource` VALUES (16, 'system:role:api:del', '角色删除', 'system:resource:api', 4, '', '', 0, '/api/nkm-cms/system/role/del', 1, 1592315817575, 0);
+INSERT INTO `nkm_resource` VALUES (17, 'system:dict:api:save', '字典保存', 'system:resource:api', 7, '', '', 0, '/api/nkm-cms/system/dictionary/save', 1, 1592315866661, 0);
+INSERT INTO `nkm_resource` VALUES (18, 'system:dict:api:del', '字典删除', 'system:resource:api', 7, '', '', 0, '/api/nkm-cms/system/dictionary/del', 1, 1592315899190, 0);
 INSERT INTO `nkm_resource` VALUES (19, 'category', '栏目管理', 'system:resource:menu', 0, '', 'el-icon-menu', 2, '/category', 1, 1593861411182, 0);
 INSERT INTO `nkm_resource` VALUES (20, 'article', '文章管理', 'system:resource:menu', 0, '', 'el-icon-edit-outline', 3, '/article', 1, 1593861502135, 0);
 INSERT INTO `nkm_resource` VALUES (21, 'article:edit', '文章编辑', 'system:resource:page', 20, '', '', 0, '/article/edit/:id?', 1, 1594139110769, 0);
+INSERT INTO `nkm_resource` VALUES (22, 'category:api:list', '列表', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/list', 1, 1609055117986, 0);
+INSERT INTO `nkm_resource` VALUES (23, 'category:api/save', '保存', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/save', 1, 1609055163534, 0);
+INSERT INTO `nkm_resource` VALUES (24, 'category:api:del', '删除', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/del', 1, 1609055206743, 0);
+INSERT INTO `nkm_resource` VALUES (25, 'article:api:list', '列表', 'system:resource:api', 20, '', '', 0, '/api/nkm-cms/article/list', 1, 1609055245064, 0);
+INSERT INTO `nkm_resource` VALUES (26, 'article:api:detail', '详情', 'system:resource:api', 20, '', '', 0, '/api/nkm-cms/article/detail/:id', 1, 1609055300063, 0);
+INSERT INTO `nkm_resource` VALUES (27, 'article:api:save', '保存', 'system:resource:api', 20, '', '', 0, '/api/nkm-cms/article/save', 1, 1609055344099, 0);
+INSERT INTO `nkm_resource` VALUES (28, 'article:api:del', '删除', 'system:resource:api', 20, '', '', 0, '/api/nkm-cms/article/del', 1, 1609055372900, 0);
 COMMIT;
 
 -- ----------------------------
@@ -155,7 +162,7 @@ CREATE TABLE `nkm_role` (
   `create_time` bigint unsigned NOT NULL,
   `is_deleted` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_role
@@ -164,6 +171,7 @@ BEGIN;
 INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,6,19,20,21,1,2,8,9,10,11,12,3,13,14,4,15,16,7,17,18', 1565586505970, 0);
 INSERT INTO `nkm_role` VALUES (2, '测试', 'test', '5,6,1,2,3,4,7', 1565586505970, 0);
 INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,6,1,2,8,9,10,11,12,3,13,14,4,15,16,7,17,18', 1592377309989, 0);
+INSERT INTO `nkm_role` VALUES (4, '文章发布管理员', 'articleManager', '5,6,19,22,23,24,20,21,25,26,27,28', 1609055452685, 0);
 COMMIT;
 
 -- ----------------------------
@@ -191,9 +199,9 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1609040980184, 1, 1, '/api/nkm-admin/readfile?path=/upload/2020/12/account/20201222213249592381.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'test', 1592184900031, 1592316710463, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (3, 'testAdmin', '2569d419bfea999ff13fd1f7f4498b89', '测试管理员', 'me@example.com', 'testAdmin', 1592378282544, 1592378908652, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1609054238240, 1, 1, '/api/nkm-admin/readfile?path=/upload/2020/12/account/20201222213249592381.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', 1592184900031, 1609055613636, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1592378908652, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
