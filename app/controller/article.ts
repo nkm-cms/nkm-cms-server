@@ -25,23 +25,4 @@ export default class extends BaseController {
     await this.service.article.del(this.ctx.request.body.id)
     this.ctx.body = this.success()
   }
-
-  public async getListFront() {
-    const { ctx } = this
-    const { rows: data, count } = await this.service.article.getListFront({
-      categoryId: ctx.params.categoryId,
-      ...ctx.conversionPagination(ctx.query)
-    })
-    this.ctx.body = this.success({
-      data,
-      count
-    })
-  }
-
-  public async getDetailFront() {
-    const data = await this.service.article.getDetailFront(this.ctx.params.id)
-    this.ctx.body = this.success({
-      data
-    })
-  }
 }

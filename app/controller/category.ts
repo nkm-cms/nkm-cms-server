@@ -18,12 +18,4 @@ export default class extends BaseController {
     await this.service.category.del(this.ctx.request.body.id)
     this.ctx.body = this.success()
   }
-
-  public async getAllListFront() {
-    const { ctx } = this
-    const data = await this.service.category.getAllListFront()
-    ctx.body = this.success({
-      data
-    })
-  }
 }
