@@ -1,5 +1,5 @@
 // 路由前缀
-export const ROUTER_PREFIX = '/api/nkm-admin'
+export const ROUTER_PREFIX = '/api/nkm-cms'
 
 // 默认分页量
 export const DEFAULT_PAGE_LIMIT = 10
