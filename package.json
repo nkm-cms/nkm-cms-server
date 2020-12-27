@@ -29,6 +29,7 @@
     "egg-sequelize": "^5.2.1",
     "egg-validate": "^2.0.2",
     "mysql2": "^2.1.0",
+    "path-to-regexp": "^6.2.0",
     "svg-captcha": "^1.4.0"
   },
   "devDependencies": {

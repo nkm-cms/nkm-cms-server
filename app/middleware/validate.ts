@@ -1,5 +1,6 @@
 import { Context } from 'egg'
 import { IGNORE_ROUTES } from '../settings'
+import { pathToRegexp } from 'path-to-regexp'
 
 export default function() {
   return async function validate(ctx: Context, next: () => Promise<any>) {
@@ -23,7 +24,7 @@ export default function() {
       if (+isSystemAdmin) return await next()
 
       // 非管理员账号需要校验接口请求权限
-      if (apis.indexOf(ctx.path) === -1) {
+      if (JSON.parse(apis).findIndex((path: string) => pathToRegexp(path).test(ctx.path)) === -1) {
         ctx.throw(200, ctx.errorMsg.common.noAuthority)
       }
 
