@@ -116,6 +116,10 @@ const article: ErrorMessage = {
   notExists: {
     errorMsg: '文章不存在',
     code: '30000'
+  },
+  noSaveAuthority: {
+    errorMsg: '暂无该文章的保存权限',
+    code: '300001'
   }
 }
 

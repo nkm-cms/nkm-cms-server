@@ -14,18 +14,27 @@ interface CreateOption {
 export default class Article extends Service {
   private async _queryTheExistenceById(id: number) {
     const { ctx } = this
-    const article = await ctx.model.Article.findByPk(id)
+    const article = await ctx.model.Article.findByPk(id, {
+      raw: true
+    })
     if (!article) return ctx.throw(200, ctx.errorMsg.article.notExists)
+    return article
   }
 
   public async save({ id, content, title, status = 1, categoryId, thumbnail, images }: CreateOption) {
     const { ctx } = this
 
+    const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
+
+    // 保存之前先查出当前文章信息，并判断该文章是否为当前用的文章
+    if (id) {
+      const article: any = await this._queryTheExistenceById(id)
+      if (article.user_id !== Number(userId)) return ctx.throw(200, ctx.errorMsg.article.noSaveAuthority)
+    }
+
     ctx.validate({
       title: 'string'
     })
-
-    const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
 
     const option = {
       id,
