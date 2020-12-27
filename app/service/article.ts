@@ -115,7 +115,13 @@ export default class Article extends Service {
   }
 
   public async del(id: number) {
-    await this._queryTheExistenceById(id)
+    const userId = await this.app.redis.hget(this.ctx.request.header.token, 'id')
+    const isSystemAdmin = await this.app.redis.hget(this.ctx.request.header.token, 'isSystemAdmin')
+
+    // 保存之前先查出当前文章信息，并判断该文章是否为当前用的文章
+    const article: any = await this._queryTheExistenceById(id)
+    if (!Number(isSystemAdmin) && article.user_id !== Number(userId)) return this.ctx.throw(200, this.ctx.errorMsg.article.noDelAuthority)
+
     return this.ctx.model.Article.update({
       is_deleted: 1
     }, {

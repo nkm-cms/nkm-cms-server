@@ -120,6 +120,10 @@ const article: ErrorMessage = {
   noSaveAuthority: {
     errorMsg: '暂无该文章的保存权限',
     code: '300001'
+  },
+  noDelAuthority: {
+    errorMsg: '暂无该文章的删除权限',
+    code: '300002'
   }
 }
 
