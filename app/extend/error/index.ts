@@ -112,11 +112,27 @@ const dictionary: ErrorMessage = {
   }
 }
 
+const article: ErrorMessage = {
+  notExists: {
+    errorMsg: '文章不存在',
+    code: '30000'
+  }
+}
+
+const category: ErrorMessage = {
+  notExists: {
+    errorMsg: '栏目不存在',
+    code: '30100'
+  }
+}
+
 export default {
   common,
   login,
   user,
   resource,
   role,
-  dictionary
+  dictionary,
+  article,
+  category
 }

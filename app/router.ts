@@ -35,5 +35,14 @@ export default (app: Application) => {
   router.post('/system/dictionary/save', controller.system.dictionary.save)
   router.post('/system/dictionary/del', controller.system.dictionary.del)
 
+  router.get('/article/list', controller.article.getList)
+  router.get('/article/detail/:id', controller.article.getDetail)
+  router.post('/article/save', controller.article.save)
+  router.post('/article/del', controller.article.del)
+
+  router.get('/category/list', controller.category.getList)
+  router.post('/category/save', controller.category.save)
+  router.post('/category/del', controller.category.del)
+
   router.get('/captcha', controller.captcha.init)
 }

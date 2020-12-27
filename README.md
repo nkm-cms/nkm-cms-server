@@ -1,8 +1,8 @@
-# 后台服务端
+# nkm-cms内容管理系统服务端
 
 - 技术栈：Nodejs+Eggjs+Typescript+Mysql+Redis
 - 接口文档都在[nkm-admin.postman_collection.json](./nkm-admin.postman_collection.json)文件，导入到postman即可
-- 数据库导入[nkm_admin.sql](./nkm_admin.sql)文件
+- 数据库导入[nkm_cms.sql](./nkm_cms.sql)文件
 - 管理员用户账号密码：admin/123456
 - 其他配置参考eggjs文档[https://eggjs.org/zh-cn/basics/structure.html](https://eggjs.org/zh-cn/basics/structure.html)
 

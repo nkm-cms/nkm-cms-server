@@ -3,7 +3,9 @@
 
 import 'egg';
 import ExportBaseController from '../../../app/controller/BaseController';
+import ExportArticle from '../../../app/controller/article';
 import ExportCaptcha from '../../../app/controller/captcha';
+import ExportCategory from '../../../app/controller/category';
 import ExportLogin from '../../../app/controller/login';
 import ExportLoginOut from '../../../app/controller/loginOut';
 import ExportUpload from '../../../app/controller/upload';
@@ -15,7 +17,9 @@ import ExportSystemUser from '../../../app/controller/system/user';
 declare module 'egg' {
   interface IController {
     baseController: ExportBaseController;
+    article: ExportArticle;
     captcha: ExportCaptcha;
+    category: ExportCategory;
     login: ExportLogin;
     loginOut: ExportLoginOut;
     upload: ExportUpload;
