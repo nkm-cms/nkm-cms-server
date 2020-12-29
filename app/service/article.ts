@@ -21,7 +21,7 @@ export default class Article extends Service {
   }
 
   public async save({ id, content, title, status = 1, categoryId, thumbnail }: CreateOption) {
-    const { ctx } = this
+    const { ctx, app } = this
 
     const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
 
@@ -34,6 +34,9 @@ export default class Article extends Service {
     ctx.validate({
       title: 'string'
     })
+
+    // 匹配出文章中的文件路径，从reids中删除匹配的文件路径
+    await ctx.deleteFilesByReids(content, app)
 
     const option = {
       id,
