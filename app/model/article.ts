@@ -21,8 +21,14 @@ export default function(app: Application) {
       allowNull: false,
       defaultValue: ''
     },
-    images: {
-      type: STRING,
+    tags: {
+      type: STRING(200),
+      allowNull: false,
+      defaultValue: ''
+    },
+    summary: {
+      type: STRING(300),
+      allowNull: false,
       defaultValue: ''
     },
     title: {

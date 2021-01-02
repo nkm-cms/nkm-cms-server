@@ -3,8 +3,10 @@ import { Service } from 'egg'
 interface CreateOption {
   id: number;
   userId: number;
-  content: string;
   title: string;
+  content: string;
+  tags: string;
+  summary: string;
   status?: number;
   categoryId: number;
   thumbnail: string;
@@ -20,7 +22,16 @@ export default class Article extends Service {
     return article
   }
 
-  public async save({ id, content, title, status = 1, categoryId, thumbnail }: CreateOption) {
+  public async save({
+    id,
+    title,
+    content,
+    tags,
+    summary,
+    status = 1,
+    categoryId,
+    thumbnail
+  }: CreateOption) {
     const { ctx, app } = this
 
     const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
@@ -37,11 +48,14 @@ export default class Article extends Service {
 
     // 匹配出文章中的文件路径，从reids中删除匹配的文件路径
     await ctx.deleteFilesByReids(content, app)
+    await ctx.deleteFilesByReids(thumbnail, app)
 
     const option = {
       id,
-      content,
       title,
+      content,
+      tags,
+      summary,
       status,
       category_id: categoryId,
       user_id: userId,
@@ -93,12 +107,13 @@ export default class Article extends Service {
         'id',
         'title',
         'content',
+        'tags',
+        'summary',
         'status',
         'is_deleted',
         'create_time',
         'category_id',
-        'thumbnail',
-        'images'
+        'thumbnail'
       ],
       include: [{
         model: this.ctx.model.User,
@@ -121,7 +136,9 @@ export default class Article extends Service {
 
     // 保存之前先查出当前文章信息，并判断该文章是否为当前用的文章
     const article: any = await this._queryTheExistenceById(id)
-    if (!Number(isSystemAdmin) && article.user_id !== Number(userId)) return this.ctx.throw(200, this.ctx.errorMsg.article.noDelAuthority)
+    if (!Number(isSystemAdmin) && article.user_id !== Number(userId)) {
+      return this.ctx.throw(200, this.ctx.errorMsg.article.noDelAuthority)
+    }
 
     return this.ctx.model.Article.update({
       is_deleted: 1
