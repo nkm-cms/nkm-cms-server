@@ -119,11 +119,11 @@ const article: ErrorMessage = {
   },
   noSaveAuthority: {
     errorMsg: '暂无该文章的保存权限',
-    code: '300001'
+    code: '30001'
   },
   noDelAuthority: {
     errorMsg: '暂无该文章的删除权限',
-    code: '300002'
+    code: '30002'
   }
 }
 
@@ -131,6 +131,10 @@ const category: ErrorMessage = {
   notExists: {
     errorMsg: '栏目不存在',
     code: '30100'
+  },
+  noParentId: {
+    errorMsg: '父级栏目不能为空',
+    code: '30101'
   }
 }
 

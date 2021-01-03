@@ -34,6 +34,9 @@ export default class Category extends Service {
       }
     })
 
+    // 父级栏目不能为空
+    if (!parentId) return ctx.throw(200, ctx.errorMsg.category.noParentId)
+
     const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
 
     const option = {
