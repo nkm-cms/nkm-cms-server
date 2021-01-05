@@ -8,6 +8,7 @@ import ExportCaptcha from '../../../app/controller/captcha';
 import ExportCategory from '../../../app/controller/category';
 import ExportLogin from '../../../app/controller/login';
 import ExportLoginOut from '../../../app/controller/loginOut';
+import ExportTags from '../../../app/controller/tags';
 import ExportUpload from '../../../app/controller/upload';
 import ExportSystemDictionary from '../../../app/controller/system/dictionary';
 import ExportSystemResource from '../../../app/controller/system/resource';
@@ -22,6 +23,7 @@ declare module 'egg' {
     category: ExportCategory;
     login: ExportLogin;
     loginOut: ExportLoginOut;
+    tags: ExportTags;
     upload: ExportUpload;
     system: {
       dictionary: ExportSystemDictionary;

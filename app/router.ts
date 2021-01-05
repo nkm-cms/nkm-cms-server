@@ -44,5 +44,9 @@ export default (app: Application) => {
   router.post('/category/save', controller.category.save)
   router.post('/category/del', controller.category.del)
 
+  router.get('/tags/list', controller.tags.getList)
+  router.post('/tags/save', controller.tags.save)
+  router.post('/tags/del', controller.tags.del)
+
   router.get('/captcha', controller.captcha.init)
 }

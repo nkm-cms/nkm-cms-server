@@ -7,6 +7,7 @@ import ExportCategory from '../../../app/model/category';
 import ExportDictionary from '../../../app/model/dictionary';
 import ExportResource from '../../../app/model/resource';
 import ExportRole from '../../../app/model/role';
+import ExportTags from '../../../app/model/tags';
 import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
@@ -16,6 +17,7 @@ declare module 'egg' {
     Dictionary: ReturnType<typeof ExportDictionary>;
     Resource: ReturnType<typeof ExportResource>;
     Role: ReturnType<typeof ExportRole>;
+    Tags: ReturnType<typeof ExportTags>;
     User: ReturnType<typeof ExportUser>;
   }
 }

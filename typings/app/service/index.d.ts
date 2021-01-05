@@ -11,6 +11,7 @@ import ExportCaptcha from '../../../app/service/captcha';
 import ExportCategory from '../../../app/service/category';
 import ExportLogin from '../../../app/service/login';
 import ExportLoginOut from '../../../app/service/loginOut';
+import ExportTags from '../../../app/service/tags';
 import ExportUpload from '../../../app/service/upload';
 import ExportSystemDictionary from '../../../app/service/system/dictionary';
 import ExportSystemResource from '../../../app/service/system/resource';
@@ -24,6 +25,7 @@ declare module 'egg' {
     category: AutoInstanceType<typeof ExportCategory>;
     login: AutoInstanceType<typeof ExportLogin>;
     loginOut: AutoInstanceType<typeof ExportLoginOut>;
+    tags: AutoInstanceType<typeof ExportTags>;
     upload: AutoInstanceType<typeof ExportUpload>;
     system: {
       dictionary: AutoInstanceType<typeof ExportSystemDictionary>;
