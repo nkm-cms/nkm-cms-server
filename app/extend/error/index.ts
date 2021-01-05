@@ -17,7 +17,7 @@ const common: ErrorMessage = {
   },
 
   serverError: {
-    errorMsg: 'Server Error',
+    errorMsg: '服务响应异常',
     code: '10002'
   },
 

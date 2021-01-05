@@ -7,7 +7,7 @@ import ExportArticle from '../../../app/controller/article';
 import ExportCaptcha from '../../../app/controller/captcha';
 import ExportCategory from '../../../app/controller/category';
 import ExportLogin from '../../../app/controller/login';
-import ExportLoginOut from '../../../app/controller/loginOut';
+import ExportLoginOut from '../../../app/controller/login_out';
 import ExportTags from '../../../app/controller/tags';
 import ExportUpload from '../../../app/controller/upload';
 import ExportSystemDictionary from '../../../app/controller/system/dictionary';
