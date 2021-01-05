@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 02/01/2021 20:54:25
+ Date: 05/01/2021 23:20:12
 */
 
 SET NAMES utf8mb4;
@@ -60,13 +60,14 @@ CREATE TABLE `nkm_category` (
   `is_deleted` int NOT NULL COMMENT '0：不可见；1：可见',
   `visible` int NOT NULL COMMENT '0：未删除；1：已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of nkm_category
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_category` VALUES (1, '测试栏目1', 'test1', '11', 0, 1, 'list', 0, 1608649618407, 0, 1);
+INSERT INTO `nkm_category` VALUES (1, '测试栏目1', 'test1', '', 0, 1, 'list', 0, 1608649618407, 0, 1);
+INSERT INTO `nkm_category` VALUES (2, '意见收集', 'feedback', '', 0, 1, 'list', 0, 1609684014596, 0, 1);
 COMMIT;
 
 -- ----------------------------
@@ -115,7 +116,7 @@ CREATE TABLE `nkm_resource` (
   `create_time` bigint unsigned NOT NULL,
   `is_deleted` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_resource
@@ -151,6 +152,7 @@ INSERT INTO `nkm_resource` VALUES (27, 'article:api:save', '保存接口', 'syst
 INSERT INTO `nkm_resource` VALUES (28, 'article:api:del', '删除接口', 'system:resource:api', 20, '', '', 0, '/api/nkm-cms/article/del', 1, 1609055372900, 0);
 INSERT INTO `nkm_resource` VALUES (29, 'resource:api:list', '列表', 'system:resource:api', 3, '', '', 0, '/api/nkm-cms/system/resource/list', 1, 1609058264438, 0);
 INSERT INTO `nkm_resource` VALUES (30, 'article', '文章管理', 'system:resource:menu', 0, '', 'el-icon-edit-outline', 3, '/article', 1, 1609564332497, 0);
+INSERT INTO `nkm_resource` VALUES (31, 'tags', '标签列表', 'system:resource:menu', 30, '', 'el-icon-notebook-2', 3, '/article/tags', 1, 1609769145467, 0);
 COMMIT;
 
 -- ----------------------------
@@ -171,10 +173,29 @@ CREATE TABLE `nkm_role` (
 -- Records of nkm_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,6,30,19,22,23,24,20,21,25,26,27,28,1,2,8,9,10,11,12,3,13,14,29,4,15,16,7,17,18', 1565586505970, 0);
+INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,6,30,19,22,23,24,20,21,25,26,27,28,31,1,2,8,9,10,11,12,3,13,14,29,4,15,16,7,17,18', 1565586505970, 0);
 INSERT INTO `nkm_role` VALUES (2, '测试', 'test', '5,6,21,20', 1565586505970, 0);
-INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,6,22,23,21,25,26,27,8,9,29,30,19,20,1,2,3', 1592377309989, 0);
+INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,6,22,23,21,25,26,27,31,8,9,29,30,19,20,1,2,3', 1592377309989, 0);
 INSERT INTO `nkm_role` VALUES (4, '文章发布管理员', 'articleManager', '5,6,22,23,20,21,25,26,27,28,30,19', 1609055452685, 0);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for nkm_tags
+-- ----------------------------
+DROP TABLE IF EXISTS `nkm_tags`;
+CREATE TABLE `nkm_tags` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `create_time` datetime NOT NULL,
+  `is_deleted` int unsigned NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of nkm_tags
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
@@ -202,9 +223,9 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1609587273709, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1609854712151, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', 1592184900031, 1609055613636, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1609058292982, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1609859934687, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
