@@ -6,7 +6,6 @@ coverage/
 run/
 logs/
 .DS_Store
-.vscode
 *.swp
 *.js
 !.autod.conf.js
