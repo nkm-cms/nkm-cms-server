@@ -9,11 +9,17 @@ export default class extends BaseController {
 
   public async getList() {
     const { ctx } = this
-    const { rows: data, count } = await this.service.tags.getList(ctx.conversionPagination(ctx.query))
-    ctx.body = this.success({
-      data,
-      count
-    })
+    if (ctx.query.all === '1') {
+      ctx.body = this.success({
+        data: await this.service.tags.getAllList()
+      })
+    } else {
+      const { rows: data, count } = await this.service.tags.getList(ctx.conversionPagination(ctx.query))
+      ctx.body = this.success({
+        data,
+        count
+      })
+    }
   }
 
   public async del() {

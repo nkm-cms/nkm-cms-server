@@ -13,6 +13,7 @@ interface CreateOption {
 }
 
 export default class Article extends Service {
+  // 通过id查找文章是否存在
   private async _queryTheExistenceById(id: number) {
     const { ctx } = this
     const article = await ctx.model.Article.findByPk(id, {
@@ -22,6 +23,7 @@ export default class Article extends Service {
     return article
   }
 
+  // 新增文章、保存文章，有id则更新，否则为新增
   public async save({
     id,
     title,
@@ -102,7 +104,7 @@ export default class Article extends Service {
   }
 
   public async getDetail(id: number) {
-    const article = await this.ctx.model.Article.findByPk(id, {
+    const article: any = await this.ctx.model.Article.findByPk(id, {
       attributes: [
         'id',
         'title',
@@ -127,6 +129,7 @@ export default class Article extends Service {
       raw: true
     })
     if (!article) return this.ctx.throw(200, this.ctx.errorMsg.article.notExists)
+    article.tags = JSON.parse(article.tags || '[]')
     return article
   }
 

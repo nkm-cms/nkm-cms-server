@@ -6,7 +6,7 @@ export default class Tags extends Service {
     name,
     code
   }: {
-    id: number;
+    id?: number;
     name: string;
     code: string;
   }) {
@@ -22,7 +22,7 @@ export default class Tags extends Service {
       create_time: new Date()
     }
     if (id) delete option.create_time
-    console.log(id, option)
+
     return this.ctx.model.Tags.upsert(option)
   }
 
@@ -35,6 +35,21 @@ export default class Tags extends Service {
         'name',
         'code',
         'create_time'
+      ],
+      where: {
+        is_deleted: 0
+      },
+      order: [['create_time', 'desc']],
+      raw: true
+    })
+  }
+
+  public getAllList() {
+    return this.ctx.model.Tags.findAll({
+      attributes: [
+        'id',
+        'name',
+        'code'
       ],
       where: {
         is_deleted: 0
