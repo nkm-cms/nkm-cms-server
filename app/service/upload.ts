@@ -66,19 +66,24 @@ export default class extends Service {
   }
 
   public async readFile() {
+    const { ctx } = this
+    const filePath = path.join(__dirname, `../public/${ctx.request.query.path}`)
+    const stream = fs.createReadStream(filePath)
+
     try {
-      const { ctx } = this
-      const stream = fs.createReadStream(path.join(__dirname, `../public/${ctx.request.query.path}`))
-      return {
-        stream,
-        filename: stream.path.toString().replace(/([a-z\d]+\.[a-z\d]+)$/, '$1')
-      }
+      const { size } = fs.statSync(filePath)
+      ctx.set({
+        'Content-Length': size + '',
+        'Content-Type': 'application/octet-stream'
+      })
     } catch (err) {
-      this.ctx.logger.error('[文件读取失败]', JSON.stringify(err || {}))
-      return {
-        stream: null,
-        filename: ''
-      }
+      ctx.logger.warn(`文件读取失败：${ctx.url}`)
+    }
+
+    return {
+      stream,
+      filename: decodeURIComponent(ctx.request.query.path.split('/').reverse()[0])
     }
   }
+
 }
