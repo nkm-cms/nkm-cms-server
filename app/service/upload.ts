@@ -68,21 +68,44 @@ export default class extends Service {
   public async readFile() {
     const { ctx } = this
     const filePath = path.join(__dirname, `../public/${ctx.request.query.path}`)
-    const stream = fs.createReadStream(filePath)
+    let stream = fs.createReadStream(filePath)
+    const { size: fileSize } = fs.statSync(filePath)
 
     try {
-      const { size } = fs.statSync(filePath)
-      ctx.set({
-        'Content-Length': size + '',
-        'Content-Type': 'application/octet-stream'
-      })
+      // 查看请求是否分段
+      const range = ctx.request.headers.range
+      if (range) {
+        // 获取范围的开始和结束
+        let { start, end } = (/bytes=(?<start>\d+)-(?<end>\d+)?/.exec(range) || {}).groups || {
+          start: 0,
+          end: 0
+        }
+        start = Number(start)
+        end = Number(end) ? Number(end) : start + 999999
+        end = end > fileSize - 1 ? fileSize - 1 : end
+        const chunksize = (end - start) + 1
+        ctx.set({
+          'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunksize + '',
+          'Content-Type': 'application/octet-stream',
+          'cache-control': 'public,max-age=31536000'
+        })
+        ctx.status = 206
+        stream = fs.createReadStream(filePath, {
+          start,
+          end
+        })
+      } else {
+        ctx.set({
+          'Content-Length': fileSize + '',
+          'Content-Type': 'application/octet-stream'
+        })
+      }
     } catch (err) {
       ctx.logger.warn(`文件读取失败：${ctx.url}`)
     }
-
-    return {
-      stream,
-      filename: decodeURIComponent(ctx.request.query.path.split('/').reverse()[0])
-    }
+    ctx.attachment(decodeURIComponent(ctx.request.query.path.split('/').reverse()[0]))
+    ctx.body = stream
   }
 }

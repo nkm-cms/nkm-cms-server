@@ -9,12 +9,6 @@ export default class Upload extends BaseController {
   }
 
   public async readFile() {
-    const { ctx } = this
-    const {
-      stream,
-      filename
-    } = await this.ctx.service.upload.readFile()
-    ctx.attachment(filename)
-    ctx.body = stream
+    this.ctx.service.upload.readFile()
   }
 }
