@@ -28,7 +28,8 @@ export default (appInfo: EggAppInfo) => {
   }
 
   config.multipart = {
-    mode: 'file'
+    mode: 'file',
+    fileSize: '1000mb'
   }
 
   config.redis = {
