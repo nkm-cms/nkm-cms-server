@@ -85,5 +85,4 @@ export default class extends Service {
       filename: decodeURIComponent(ctx.request.query.path.split('/').reverse()[0])
     }
   }
-
 }
