@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 15/01/2021 22:12:25
+ Date: 17/01/2021 11:34:28
 */
 
 SET NAMES utf8mb4;
@@ -142,21 +142,21 @@ INSERT INTO `nkm_resource` VALUES (16, 'system:role:api:del', '角色删除', 's
 INSERT INTO `nkm_resource` VALUES (17, 'system:dict:api:save', '接口-字典保存', 'system:resource:api', 7, '', '', 0, '/api/nkm-cms/system/dictionary/save', 1, 1592315866661, 0);
 INSERT INTO `nkm_resource` VALUES (18, 'system:dict:api:del', '接口-字典删除', 'system:resource:api', 7, '', '', 0, '/api/nkm-cms/system/dictionary/del', 1, 1592315899190, 0);
 INSERT INTO `nkm_resource` VALUES (19, 'category', '栏目列表', 'system:resource:menu', 30, '', 'el-icon-menu', 2, '/article/category', 1, 1593861411182, 0);
-INSERT INTO `nkm_resource` VALUES (20, 'article', '文章', 'system:resource:menu', 30, '', 'el-icon-menu', 3, '', 1, 1593861502135, 0);
-INSERT INTO `nkm_resource` VALUES (21, 'article:edit', '文章编辑', 'system:resource:menu', 20, '', 'el-icon-edit', 1, '/article/edit/:id?', 1, 1594139110769, 0);
+INSERT INTO `nkm_resource` VALUES (20, 'article', '文章', 'system:resource:menu', 30, '', 'el-icon-menu', 3, '', 1, 1593861502135, 1);
+INSERT INTO `nkm_resource` VALUES (21, 'article:edit', '文章编辑', 'system:resource:menu', 30, '', 'el-icon-edit', 1, '/article/edit', 1, 1594139110769, 0);
 INSERT INTO `nkm_resource` VALUES (22, 'category:api:list', '列表接口', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/list', 1, 1609055117986, 0);
 INSERT INTO `nkm_resource` VALUES (23, 'category:api/save', '保存接口', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/save', 1, 1609055163534, 0);
 INSERT INTO `nkm_resource` VALUES (24, 'category:api:del', '删除接口', 'system:resource:api', 19, '', '', 0, '/api/nkm-cms/category/del', 1, 1609055206743, 0);
-INSERT INTO `nkm_resource` VALUES (25, 'article:api:list', '列表接口', 'system:resource:api', 20, '', '', 10, '/api/nkm-cms/article/list', 1, 1609055245064, 0);
-INSERT INTO `nkm_resource` VALUES (26, 'article:api:detail', '详情接口', 'system:resource:api', 20, '', '', 10, '/api/nkm-cms/article/detail/:id', 1, 1609055300063, 0);
-INSERT INTO `nkm_resource` VALUES (27, 'article:api:save', '保存接口', 'system:resource:api', 20, '', '', 10, '/api/nkm-cms/article/save', 1, 1609055344099, 0);
-INSERT INTO `nkm_resource` VALUES (28, 'article:api:del', '删除接口', 'system:resource:api', 20, '', '', 10, '/api/nkm-cms/article/del', 1, 1609055372900, 0);
+INSERT INTO `nkm_resource` VALUES (25, 'article:api:list', '列表接口', 'system:resource:api', 34, '', '', 10, '/api/nkm-cms/article/list', 1, 1609055245064, 0);
+INSERT INTO `nkm_resource` VALUES (26, 'article:api:detail', '详情接口', 'system:resource:api', 21, '', '', 10, '/api/nkm-cms/article/detail/:id', 1, 1609055300063, 0);
+INSERT INTO `nkm_resource` VALUES (27, 'article:api:save', '保存接口', 'system:resource:api', 21, '', '', 10, '/api/nkm-cms/article/save', 1, 1609055344099, 0);
+INSERT INTO `nkm_resource` VALUES (28, 'article:api:del', '删除接口', 'system:resource:api', 34, '', '', 10, '/api/nkm-cms/article/del', 1, 1609055372900, 0);
 INSERT INTO `nkm_resource` VALUES (29, 'resource:api:list', '列表', 'system:resource:api', 3, '', '', 0, '/api/nkm-cms/system/resource/list', 1, 1609058264438, 0);
 INSERT INTO `nkm_resource` VALUES (30, 'article-manager', '文章管理', 'system:resource:menu', 0, '', 'el-icon-notebook-2', 3, '/article', 1, 1609564332497, 0);
 INSERT INTO `nkm_resource` VALUES (31, 'tags', '标签列表', 'system:resource:menu', 30, '', 'el-icon-collection-tag', 3, '/article/tags', 1, 1609769145467, 0);
 INSERT INTO `nkm_resource` VALUES (32, 'placeholder1', '占位', 'placeholder', 7, '', '', 0, '', 1, 1610463949678, 0);
 INSERT INTO `nkm_resource` VALUES (33, 'placeholder2', '占位', 'placeholder', 4, '', '', 0, '', 1, 1610464049786, 0);
-INSERT INTO `nkm_resource` VALUES (34, 'article:list', '文章列表', 'system:resource:menu', 20, '', 'el-icon-menu', 0, '/article/list', 1, 1610681736858, 0);
+INSERT INTO `nkm_resource` VALUES (34, 'article:list', '文章列表', 'system:resource:menu', 30, '', 'el-icon-menu', 0, '/article/list', 1, 1610681736858, 0);
 INSERT INTO `nkm_resource` VALUES (35, 'modify-password', '修改密码', 'system:resource:btn', 6, '', '', 0, '', 1, 1610719792059, 0);
 INSERT INTO `nkm_resource` VALUES (36, 'placeholder3', '占位', 'placeholder', 6, '', '', 0, '', 1, 1610719873397, 0);
 COMMIT;
@@ -181,7 +181,7 @@ CREATE TABLE `nkm_role` (
 BEGIN;
 INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,35,30,19,22,23,24,20,34,21,25,26,27,28,31,2,8,9,10,11,12,3,13,14,29,15,16,17,18,6,1,4,7', 1565586505970, 0);
 INSERT INTO `nkm_role` VALUES (2, '测试', 'test', '5,6,21,20', 1565586505970, 0);
-INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,36,22,23,34,21,25,26,27,31,8,9,29,33,32,6,30,19,20,1,2,3,4,7', 1592377309989, 0);
+INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,36,30,34,25,28,21,26,27,19,22,23,24,31,8,9,29,33,32,6,1,2,3,4,7', 1592377309989, 0);
 INSERT INTO `nkm_role` VALUES (4, '文章发布管理员', 'articleManager', '5,36,22,23,20,34,21,25,26,27,28,6,30,19', 1609055452685, 0);
 COMMIT;
 
@@ -229,9 +229,9 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1610719911976, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1610854268986, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', 1592184900031, 1609055613636, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1610465866493, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1610720114980, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
