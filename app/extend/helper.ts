@@ -1,4 +1,5 @@
 import { createHash } from 'crypto'
+import * as getFileMimeType from '@xuanmo/mime-types'
 
 /**
   * 是否为对象
@@ -29,6 +30,8 @@ export default {
   toUnderline,
 
   isObject,
+
+  getFileMimeType,
 
   /**
    * md5加密

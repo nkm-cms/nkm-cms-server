@@ -138,6 +138,13 @@ const category: ErrorMessage = {
   }
 }
 
+const media: ErrorMessage = {
+  noFileOrDirectory: {
+    errorMsg: '文件或目录不存在',
+    code: '50000'
+  }
+}
+
 export default {
   common,
   login,
@@ -146,5 +153,6 @@ export default {
   role,
   dictionary,
   article,
-  category
+  category,
+  media
 }

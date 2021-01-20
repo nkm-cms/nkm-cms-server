@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 20/01/2021 23:55:37
+ Date: 17/01/2021 11:34:28
 */
 
 SET NAMES utf8mb4;
@@ -34,14 +34,13 @@ CREATE TABLE `nkm_article` (
   `create_time` bigint NOT NULL,
   `is_deleted` int unsigned NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_article
 -- ----------------------------
 BEGIN;
 INSERT INTO `nkm_article` VALUES (1, '关于nkm-cms内容管理系统的介绍', '/api/nkm-cms/readfile?path=/upload/2021/01/editor/20210102111424749502.png', '<p style=\"text-align:center\"><strong style=\"font-size:18px\">nkm-cms内容管理系统基础框架</strong></p><p style=\"text-align:center;font-size:14px\">作者：轩陌</p><p style=\"text-align:left;text-indent:2em;font-size:14px\">在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这块一直没有找到一个比较好用的，CKEditor比较重，UEditor官方不维护，各种原因不爽，其他的也有做尝试，但是感觉并不是自己想要的，后边有了解到textbus这个编辑器，也就是现在的这个，尝试了一下还不错，暂时先用着，目前暂时没有发现什么特别大的问题。</p><p style=\"text-align:left;text-indent:2em;font-size:14px\">关于这套内容管理系统的后续还需要开发的功能有：站点设置、文章内容里上传的图片做未使用的删除功能、文章增加版本历史记录、文章关联到用户权限、前端展示页面如果有好的设计会做一版对应的博客，嗯，目前就这个打算。<br></p><p style=\"text-align:left;text-indent:2em;font-size:14px\">nkm的命名由来：n取的是nodejs的首字母，k是取的koa2的首字母，m取的是mysql的首字母，所以就有了<u><strong>nkm-admin</strong></u>、<u><strong>nkm-cms</strong></u>的命名，目前几个仓库的介绍如下：</p><table><tbody><tr><td>仓库名<br></td><td>介绍<br></td><td>仓库地址<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">🔨nkm-server-ts</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统</span>基础框架（服务端），使用Eggjs重构的后端，技术栈：Eggjs+mysql+redis<br></td><td>https://github.com/nkm-admin/nkm-server-ts<br></td></tr><tr><td>🔨nkm-web<br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统基础</span>框架（前端），技术栈：Vuejs+Element-UI<br></td><td>https://github.com/nkm-admin/nkm-web<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-cms-server</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">基于nkm-server-ts实现的内容管理系统（服务端），目前只开发了栏目管理、文章管理，后续的功能还在开发中</span><br></td><td>https://github.com/nkm-admin/nkm-cms-server<br></td></tr><tr><td>nkm-cms-web<br></td><td>基于nkm-web实现的内容管理系统（前端）<br></td><td>https://github.com/nkm-admin/nkm-cms<br></td></tr><tr><td>nkm-web-template<br></td><td>前端的基础模版，不带任何权限<br></td><td>https://github.com/nkm-admin/nkm-web-template<br></td></tr></tbody></table><p><br></p><p><br></p>', '[]', 'nkm-cms内容管理系统基础框架\n\n作者：轩陌\n\n在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这', 1, 1, 1, 1608724009836, 0);
-INSERT INTO `nkm_article` VALUES (2, '视频测试', '', '<p><video src=\"http://cms-test.xuanmo.xin/api/nkm-cms/readfile?path=/upload/2021/01/editor/20210114170725264999.mp4\" controls style=\"width:293px;height:520px\"></video><br></p>', '[]', '', 1, 2, 1, 1610711296550, 0);
 COMMIT;
 
 -- ----------------------------
@@ -118,7 +117,7 @@ CREATE TABLE `nkm_resource` (
   `create_time` bigint unsigned NOT NULL,
   `is_deleted` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_resource
@@ -160,8 +159,6 @@ INSERT INTO `nkm_resource` VALUES (33, 'placeholder2', '占位', 'placeholder', 
 INSERT INTO `nkm_resource` VALUES (34, 'article:list', '文章列表', 'system:resource:menu', 30, '', 'el-icon-menu', 0, '/article/list', 1, 1610681736858, 0);
 INSERT INTO `nkm_resource` VALUES (35, 'modify-password', '修改密码', 'system:resource:btn', 6, '', '', 0, '', 1, 1610719792059, 0);
 INSERT INTO `nkm_resource` VALUES (36, 'placeholder3', '占位', 'placeholder', 6, '', '', 0, '', 1, 1610719873397, 0);
-INSERT INTO `nkm_resource` VALUES (37, 'media', '媒体库', 'system:resource:menu', 0, '', 'el-icon-video-camera', 3, '/media', 1, 1611144598459, 0);
-INSERT INTO `nkm_resource` VALUES (38, 'media-read-dir', '读取目录-接口', 'system:resource:api', 37, '', '', 0, '/api/nkm-cms/media/read-directory', 1, 1611157964719, 0);
 COMMIT;
 
 -- ----------------------------
@@ -182,9 +179,9 @@ CREATE TABLE `nkm_role` (
 -- Records of nkm_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,35,30,34,25,28,21,26,27,19,22,23,24,31,37,2,8,9,10,11,12,3,13,14,29,15,16,17,18,6,1,4,7', 1565586505970, 0);
+INSERT INTO `nkm_role` VALUES (1, '系统管理员', 'systemAdministrator', '5,35,30,19,22,23,24,20,34,21,25,26,27,28,31,2,8,9,10,11,12,3,13,14,29,15,16,17,18,6,1,4,7', 1565586505970, 0);
 INSERT INTO `nkm_role` VALUES (2, '测试', 'test', '5,6,21,20', 1565586505970, 0);
-INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,36,30,34,25,28,21,26,27,19,22,23,24,31,37,38,8,9,29,33,32,6,1,2,3,4,7', 1592377309989, 0);
+INSERT INTO `nkm_role` VALUES (3, '测试管理员', 'testAdmin', '5,36,30,34,25,28,21,26,27,19,22,23,24,31,8,9,29,33,32,6,1,2,3,4,7', 1592377309989, 0);
 INSERT INTO `nkm_role` VALUES (4, '文章发布管理员', 'articleManager', '5,36,22,23,20,34,21,25,26,27,28,6,30,19', 1609055452685, 0);
 COMMIT;
 
@@ -232,9 +229,9 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1611145132771, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1610854268986, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', 1592184900031, 1609055613636, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1611157994315, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1610720114980, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

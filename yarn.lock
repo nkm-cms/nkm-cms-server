@@ -593,6 +593,13 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@xuanmo/mime-types@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@xuanmo/mime-types/-/mime-types-0.0.2.tgz#a1473e896bbbb97920e694882bb8a74652523d51"
+  integrity sha512-7/Roi03Pm8MmBKFGygVDfruKoVQhxDXixbotAiCuy4W+UIsELQ53aKIlctCyQtu9pSlGp0tY3sBjDmff8qE/TQ==
+  dependencies:
+    ms "^2.0.0"
+
 a-sync-waterfall@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/a-sync-waterfall/-/a-sync-waterfall-1.0.1.tgz#75b6b6aa72598b497a125e7a2770f14f4c8a1fa7"

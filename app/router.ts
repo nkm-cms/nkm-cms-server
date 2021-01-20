@@ -48,5 +48,7 @@ export default (app: Application) => {
   router.post('/tags/save', controller.tags.save)
   router.post('/tags/del', controller.tags.del)
 
+  router.post('/media/read-directory', controller.media.readDirectory)
+
   router.get('/captcha', controller.captcha.init)
 }
