@@ -111,5 +111,19 @@ export default {
     if (isObject(value)) return JSON.stringify(value) === '{}'
 
     return [null, undefined, ''].includes(value)
+  },
+
+  /**
+   * 格式化文件大小
+   * @param {number} size 文件大小
+   */
+  fileSizeFormatter: (size: number): string => {
+    if (isNaN(Number(size))) return ''
+    const base = 1024
+    if (size < base) return `${size}B`
+    if (size < Math.pow(base, 2)) return `${(size / base).toFixed(2)}KB`
+    if (size < Math.pow(base, 3)) return `${(size / Math.pow(base, 2)).toFixed(2)}MB`
+    if (size < Math.pow(base, 4)) return `${(size / Math.pow(base, 3)).toFixed(2)}GB`
+    return `${(size / Math.pow(base, 4)).toFixed(2)}GB`
   }
 }

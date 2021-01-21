@@ -19,7 +19,7 @@ export default class Media extends Service {
           filename: item,
           isDirectory: _stat.isDirectory(),
           createTime: _stat.birthtime,
-          size: _stat.size,
+          size: ctx.helper.fileSizeFormatter(_stat.size),
           type: ctx.helper.getFileMimeType(item),
           url: _stat.isDirectory() ? '' : `${ROUTER_PREFIX}/readfile?path=${filePath.replace(this.rootDir, '')}/${item}`
         }
@@ -27,6 +27,14 @@ export default class Media extends Service {
       }).sort((a, b) => b.isDirectory - a.isDirectory)
     } catch (err) {
       return ctx.throw(200, ctx.errorMsg.media.noFileOrDirectory)
+    }
+  }
+
+  public deleteFile(filePath: string) {
+    try {
+      return fs.unlinkSync(path.join(this.rootDir, filePath))
+    } catch (err) {
+      return this.ctx.throw(200, this.ctx.errorMsg.media.delFileFail)
     }
   }
 }

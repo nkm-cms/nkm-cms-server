@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 20/01/2021 23:55:37
+ Date: 21/01/2021 21:29:48
 */
 
 SET NAMES utf8mb4;
@@ -118,7 +118,7 @@ CREATE TABLE `nkm_resource` (
   `create_time` bigint unsigned NOT NULL,
   `is_deleted` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of nkm_resource
@@ -162,6 +162,7 @@ INSERT INTO `nkm_resource` VALUES (35, 'modify-password', '修改密码', 'syste
 INSERT INTO `nkm_resource` VALUES (36, 'placeholder3', '占位', 'placeholder', 6, '', '', 0, '', 1, 1610719873397, 0);
 INSERT INTO `nkm_resource` VALUES (37, 'media', '媒体库', 'system:resource:menu', 0, '', 'el-icon-video-camera', 3, '/media', 1, 1611144598459, 0);
 INSERT INTO `nkm_resource` VALUES (38, 'media-read-dir', '读取目录-接口', 'system:resource:api', 37, '', '', 0, '/api/nkm-cms/media/read-directory', 1, 1611157964719, 0);
+INSERT INTO `nkm_resource` VALUES (39, 'media-del-file', '删除文件-接口', 'system:resource:api', 37, '', '', 0, '/api/nkm-cms/media/del', 1, 1611235738785, 0);
 COMMIT;
 
 -- ----------------------------
@@ -232,7 +233,7 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1611145132771, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '系统管理员', 'me@example.com', 'systemAdministrator', 1565758490904, 1611235758522, 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', 1592184900031, 1609055613636, 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', 1592378282544, 1611157994315, 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
 COMMIT;

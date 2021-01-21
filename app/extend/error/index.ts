@@ -142,6 +142,10 @@ const media: ErrorMessage = {
   noFileOrDirectory: {
     errorMsg: '文件或目录不存在',
     code: '50000'
+  },
+  delFileFail: {
+    errorMsg: '文件删除失败',
+    code: '50001'
   }
 }
 
