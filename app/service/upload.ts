@@ -69,6 +69,7 @@ export default class extends Service {
     const { ctx } = this
     const filePath = path.join(__dirname, `../public/${ctx.request.query.path}`)
     let stream = fs.createReadStream(filePath)
+    stream.on('error', () => ctx.logger.warn(`文件读取失败：${ctx.url}`))
     const { size: fileSize } = fs.statSync(filePath)
 
     try {
