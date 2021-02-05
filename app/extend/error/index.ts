@@ -146,6 +146,14 @@ const media: ErrorMessage = {
   delFileFail: {
     errorMsg: '文件删除失败',
     code: '50001'
+  },
+  pathIsEmpty: {
+    errorMsg: '上传路径不能为空',
+    code: '50002'
+  },
+  directoryAlreadyExists: {
+    errorMsg: '目录已存在',
+    code: '50003'
   }
 }
 

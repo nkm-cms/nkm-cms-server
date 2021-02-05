@@ -29,7 +29,8 @@ export default (appInfo: EggAppInfo) => {
 
   config.multipart = {
     mode: 'file',
-    fileSize: '1000mb'
+    fileSize: '1000mb',
+    fileExtensions: ['.pdf', '.md', '.doc', '.docx', 'xlsx']
   }
 
   config.redis = {

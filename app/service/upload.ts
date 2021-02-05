@@ -13,22 +13,37 @@ export default class extends Service {
   public async upload() {
     const { ctx, app } = this
     // 存放文件的目录
-    const dir = path.join(__dirname, '../public/upload')
+    const rootDir = path.join(__dirname, '../public/upload')
+
+    // 上传类型
+    const type = ctx.request.body.type
+
+    // 是否为媒体库上传
+    const isMedia = ctx.request.body.type === 'media'
+    const mediaUploadPath = ctx.request.body.path
 
     const year = ctx.datejs().format('yyyy')
     const month = ctx.datejs().format('MM')
 
     // 文件上传类型
     const dirType = ['account', 'editor']
-    const fileType = dirType.indexOf(ctx.request.body.type) === -1 ? '' : ctx.request.body.type
+    const fileType = dirType.indexOf(type) === -1 ? '' : type
+
+    let writeDir = ''
 
     // 判断目录是否存在
-    !fs.existsSync(dir) && fs.mkdirSync(dir)
-    !fs.existsSync(`${dir}/${year}`) && fs.mkdirSync(`${dir}/${year}`)
-    !fs.existsSync(`${dir}/${year}/${month}`) && fs.mkdirSync(`${dir}/${year}/${month}`)
-    !fs.existsSync(`${dir}/${year}/${month}/${fileType}`) && fs.mkdirSync(`${dir}/${year}/${month}/${fileType}`)
-
-    const writeDir = `${dir}/${year}/${month}/${fileType}`
+    !fs.existsSync(rootDir) && fs.mkdirSync(rootDir)
+    if (isMedia) {
+      if (!mediaUploadPath) ctx.throw(200, ctx.errorMsg.media.pathIsEmpty)
+      const _path = path.join(rootDir, mediaUploadPath)
+      !fs.existsSync(_path) && fs.mkdirSync(_path)
+      writeDir = _path
+    } else {
+      !fs.existsSync(`${rootDir}/${year}`) && fs.mkdirSync(`${rootDir}/${year}`)
+      !fs.existsSync(`${rootDir}/${year}/${month}`) && fs.mkdirSync(`${rootDir}/${year}/${month}`)
+      !fs.existsSync(`${rootDir}/${year}/${month}/${fileType}`) && fs.mkdirSync(`${rootDir}/${year}/${month}/${fileType}`)
+      writeDir = `${rootDir}/${year}/${month}/${fileType}`
+    }
 
     const files: FileResponse[] = []
     const filesRelativeAddress: string[] = []
@@ -44,8 +59,8 @@ export default class extends Service {
       const filename = `${ctx.datejs().format('yyyyMMddHHmmss')}${Math.random().toString().substring(2, 8)}.${ext}`
 
       // 创建可写流
-      const upStream = fs.createWriteStream(`${writeDir}/${filename}`)
-      const relativeAddress = `/upload/${year}/${month}/${fileType}/${filename}`
+      const upStream = fs.createWriteStream(`${writeDir}/${isMedia ? file.filename : filename}`)
+      const relativeAddress = isMedia ? path.join('/upload', mediaUploadPath, file.filename) : `/upload/${year}/${month}/${fileType}/${filename}`
       const remoteAddress = `${ROUTER_PREFIX}/readfile?path=${relativeAddress}`
 
       // 可读流通过管道写入可写流
@@ -60,7 +75,7 @@ export default class extends Service {
     }
 
     // 将文件地址保存到redis中
-    await app.redis.rpush('files', filesRelativeAddress)
+    if (!isMedia) await app.redis.rpush('files', filesRelativeAddress)
 
     return files
   }
@@ -89,8 +104,7 @@ export default class extends Service {
           'Content-Range': `bytes ${start}-${end}/${fileSize}`,
           'Accept-Ranges': 'bytes',
           'Content-Length': chunksize + '',
-          'Content-Type': 'application/octet-stream',
-          'cache-control': 'public,max-age=31536000'
+          'Content-Type': 'application/octet-stream'
         })
         ctx.status = 206
         stream = fs.createReadStream(filePath, {

@@ -49,6 +49,7 @@ export default (app: Application) => {
   router.post('/tags/del', controller.tags.del)
 
   router.post('/media/read-directory', controller.media.readDirectory)
+  router.post('/media/create-directory', controller.media.createDirectory)
   router.post('/media/del', controller.media.deleteFile)
 
   router.get('/captcha', controller.captcha.init)

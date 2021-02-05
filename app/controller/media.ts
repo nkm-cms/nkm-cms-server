@@ -6,9 +6,14 @@ export default class Media extends BaseController {
     })
   }
 
+  public createDirectory() {
+    this.ctx.service.media.createDirectory()
+    this.ctx.body = this.success()
+  }
+
   public async deleteFile() {
     this.ctx.body = this.success({
-      data: this.service.media.deleteFile(this.ctx.request.body.path)
+      data: this.service.media.deleteFile()
     })
   }
 }

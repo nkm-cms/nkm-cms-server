@@ -4,7 +4,7 @@ import fs = require('fs')
 import { ROUTER_PREFIX } from '../settings'
 
 export default class Media extends Service {
-  readonly rootDir = path.join(__dirname, '../public')
+  readonly rootDir = path.join(__dirname, '../public/upload')
 
   public readDirectory(directory = '') {
     const { ctx } = this
@@ -21,7 +21,7 @@ export default class Media extends Service {
           createTime: _stat.birthtime,
           size: ctx.helper.fileSizeFormatter(_stat.size),
           type: ctx.helper.getFileMimeType(item),
-          url: _stat.isDirectory() ? '' : `${ROUTER_PREFIX}/readfile?path=${filePath.replace(this.rootDir, '')}/${item}`
+          url: _stat.isDirectory() ? '' : `${ROUTER_PREFIX}/readfile?path=${filePath.replace(this.rootDir, '/upload')}/${item}`
         }
         return item
       }).sort((a, b) => b.isDirectory - a.isDirectory)
@@ -30,9 +30,19 @@ export default class Media extends Service {
     }
   }
 
-  public deleteFile(filePath: string) {
+  public createDirectory() {
+    const { ctx } = this
+    const dirPath = path.join(this.rootDir, ctx.request.body.path, ctx.request.body.name)
+    if (fs.existsSync(dirPath)) ctx.throw(200, ctx.errorMsg.media.directoryAlreadyExists)
+    ctx.validate({
+      name: 'directory'
+    })
+    fs.mkdirSync(dirPath)
+  }
+
+  public deleteFile() {
     try {
-      return fs.unlinkSync(path.join(this.rootDir, filePath))
+      return fs.unlinkSync(path.join(this.rootDir, this.ctx.request.body.path))
     } catch (err) {
       return this.ctx.throw(200, this.ctx.errorMsg.media.delFileFail)
     }

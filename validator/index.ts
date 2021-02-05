@@ -21,5 +21,9 @@ export default {
 
   code: (value: string) => {
     if (!/^[a-z\d:-_]+$/.test(value)) return '编码格式错误'
+  },
+
+  directory: (value: string) => {
+    if (!/^[a-z\d-_\u2E80-\u9FFF]+$/gi.test(value)) return '目录名只能输入中文、英文、数字、短横线（-）、下划线（_）'
   }
 }
