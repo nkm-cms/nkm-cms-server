@@ -77,7 +77,10 @@ export default class Role extends Service {
 
   public async getList() {
     const result = this.ctx.model.Role.findAll({
-      raw: true
+      raw: true,
+      where: {
+        is_deleted: 0
+      }
     })
     return result.map((item: any) => {
       item.permission = item.permission.split(',').map((id: string) => +id)
