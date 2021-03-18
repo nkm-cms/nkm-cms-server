@@ -9,7 +9,9 @@ export default class Media extends Service {
   public readDirectory(directory = '') {
     const { ctx } = this
     try {
+      // 过滤不需要读取的文件
       const ISNORE_FILE = ['.DS_Store']
+
       const filePath = path.join(this.rootDir, directory)
       let files = fs.readdirSync(filePath)
       files = files.filter((item: any) => !ISNORE_FILE.includes(item))
@@ -42,7 +44,7 @@ export default class Media extends Service {
 
   public deleteFile() {
     try {
-      return fs.unlinkSync(path.join(this.rootDir, this.ctx.request.body.path))
+      return fs.unlinkSync(path.join(this.rootDir, this.ctx.request.body.path.replace('/upload', '')))
     } catch (err) {
       return this.ctx.throw(200, this.ctx.errorMsg.media.delFileFail)
     }
