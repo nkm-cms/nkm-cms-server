@@ -37,6 +37,9 @@ export default class Category extends Service {
     // 父级栏目不能为空
     if (ctx.helper.isEmpty(parentId)) return ctx.throw(200, ctx.errorMsg.category.noParentId)
 
+    // 父级栏目不能为自己
+    if (id === +parentId) return ctx.throw(200, ctx.errorMsg.category.parentCannotIsSelf)
+
     const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
 
     const option = {

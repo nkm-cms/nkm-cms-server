@@ -135,6 +135,10 @@ const category: ErrorMessage = {
   noParentId: {
     errorMsg: '父级栏目不能为空',
     code: '30101'
+  },
+  parentCannotIsSelf: {
+    errorMsg: '父级栏目不能为自己',
+    code: '30102'
   }
 }
 
