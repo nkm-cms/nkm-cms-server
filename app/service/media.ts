@@ -6,6 +6,11 @@ import { ROUTER_PREFIX } from '../settings'
 export default class Media extends Service {
   readonly rootDir = path.join(__dirname, '../public/upload')
 
+  private isFile(file: string): boolean {
+    const stats = fs.statSync(file)
+    return stats.isFile()
+  }
+
   public readDirectory(directory = '') {
     const { ctx } = this
     try {
@@ -42,11 +47,24 @@ export default class Media extends Service {
     fs.mkdirSync(dirPath)
   }
 
-  public deleteFile() {
+  private deleteFile(filePath: string) {
     try {
-      return fs.unlinkSync(path.join(this.rootDir, this.ctx.request.body.path.replace('/upload', '')))
+      return fs.unlinkSync(filePath)
     } catch (err) {
       return this.ctx.throw(200, this.ctx.errorMsg.media.delFileFail)
     }
+  }
+
+  private deleteDirectory(filePath: string) {
+    try {
+      return fs.rmdirSync(filePath)
+    } catch (err) {
+      return this.ctx.throw(200, this.ctx.errorMsg.media.delDirectoryFail)
+    }
+  }
+
+  public deleteFileOrDirectory() {
+    const filePath = path.join(this.rootDir, this.ctx.request.body.path.replace('/upload', ''))
+    return this.isFile(filePath) ? this.deleteFile(filePath) : this.deleteDirectory(filePath)
   }
 }

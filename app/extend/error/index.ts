@@ -151,13 +151,17 @@ const media: ErrorMessage = {
     errorMsg: '文件删除失败',
     code: '50001'
   },
+  delDirectoryFail: {
+    errorMsg: '文件夹删除失败',
+    code: '50002'
+  },
   pathIsEmpty: {
     errorMsg: '上传路径不能为空',
-    code: '50002'
+    code: '50003'
   },
   directoryAlreadyExists: {
     errorMsg: '目录已存在',
-    code: '50003'
+    code: '50004'
   }
 }
 

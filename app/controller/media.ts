@@ -12,8 +12,7 @@ export default class Media extends BaseController {
   }
 
   public async deleteFile() {
-    this.ctx.body = this.success({
-      data: this.service.media.deleteFile()
-    })
+    this.service.media.deleteFileOrDirectory()
+    this.ctx.body = this.success()
   }
 }
