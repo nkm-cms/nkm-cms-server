@@ -1,5 +1,6 @@
 import { createHash } from 'crypto'
 import * as getFileMimeType from '@xuanmo/mime-types'
+import { SECRET_KEY } from '../settings'
 
 /**
   * 是否为对象
@@ -38,7 +39,7 @@ export default {
    * @param str 需要加密的字符串
    * @param salt 加盐
    */
-  md5: (str: string, salt = true): string => createHash('md5').update(`${str}${salt ? Date.now() : ''}`).digest('hex'),
+  md5: (str: string, salt = true): string => createHash('md5').update(`${str}${salt ? SECRET_KEY : ''}`).digest('hex'),
 
   /**
    * 将对象的key如果为下划线命名转换为小驼峰
