@@ -76,7 +76,7 @@ export default class Article extends Service {
   }) {
     return this.ctx.model.Article.findAndCountAll({
       limit,
-      offset: page,
+      offset: page * limit,
       include: [{
         model: this.ctx.model.User,
         as: 'user',

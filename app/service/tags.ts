@@ -29,7 +29,7 @@ export default class Tags extends Service {
   public getList({ page, limit }) {
     return this.ctx.model.Tags.findAndCountAll({
       limit,
-      offset: page,
+      offset: page * limit,
       attributes: [
         'id',
         'name',
