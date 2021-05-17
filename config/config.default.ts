@@ -12,7 +12,7 @@ export default (appInfo: EggAppInfo) => {
 
   config.sequelize = {
     username: 'root',
-    password: '',
+    password: '123456',
     database: 'nkm_cms',
     host: '127.0.0.1',
     timezone: '+08:00',
@@ -25,6 +25,11 @@ export default (appInfo: EggAppInfo) => {
 
   config.validate = {
     validateRoot: true
+  }
+
+  config.logger = {
+    outputJSON: true,
+    dir: `${appInfo.root}/logs/${appInfo.name}`
   }
 
   config.multipart = {
