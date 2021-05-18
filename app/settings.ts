@@ -10,7 +10,10 @@ export const DEFAULT_PAGE_LIMIT = 10
 // 默认密码
 export const DEFAULT_PASSWORD = 'nkm-123456'
 
-// 不需要登录的接口
+// 系统管理员角色编码
+export const SYSTEM_ADMINISTRATOR_CODE = 'systemAdministrator'
+
+// 不需要登录授权的接口
 export const IGNORE_LOGIN_ROUTES = [
   new RegExp(`${ROUTER_PREFIX}/login$`),
   new RegExp(`${ROUTER_PREFIX}/login-out$`),
