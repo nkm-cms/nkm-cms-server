@@ -50,7 +50,7 @@ export default class Resource extends Service {
 
     return ctx.model.Resource.create({
       ...ctx.helper.objectKeyToUnderline(option),
-      create_time: Date.now()
+      create_time: new Date()
     })
   }
 

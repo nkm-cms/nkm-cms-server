@@ -47,7 +47,7 @@ export default class Category extends Service {
       name,
       code,
       user_id: userId,
-      create_time: Date.now(),
+      create_time: new Date(),
       type,
       sort,
       parent_id: parentId,

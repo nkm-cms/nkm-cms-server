@@ -119,7 +119,7 @@ export default class Login extends Service {
   // 更新最后的登录信息
   private async _updateLastLoginInfo(userName: string) {
     await this.ctx.model.User.update({
-      last_login_time: Date.now(),
+      last_login_time: new Date(),
       agent: this.ctx.headers['user-agent']
     }, {
       where: {

@@ -44,7 +44,7 @@ export default class Role extends Service {
 
     return ctx.model.Role.create({
       ...option,
-      create_time: Date.now()
+      create_time: new Date()
     })
   }
 

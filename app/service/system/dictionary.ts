@@ -46,7 +46,7 @@ export default class Dictionary extends Service {
 
     return ctx.model.Dictionary.create({
       ...ctx.helper.objectKeyToUnderline(option),
-      create_time: Date.now()
+      create_time: new Date()
     })
   }
 
