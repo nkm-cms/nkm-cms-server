@@ -1,7 +1,7 @@
 import { Application } from 'egg'
 
 export default function(app: Application) {
-  const { BIGINT, STRING, INTEGER } = app.Sequelize
+  const { BIGINT, STRING, INTEGER, DATE } = app.Sequelize
 
   const Category = app.model.define('category', {
     id: {
@@ -44,8 +44,8 @@ export default function(app: Application) {
       defaultValue: 0
     },
     create_time: {
-      type: BIGINT,
-      defaultValue: Date.now()
+      type: DATE,
+      defaultValue: new Date()
     },
     visible: {
       type: INTEGER,

@@ -1,7 +1,7 @@
 import { Application } from 'egg'
 
 export default function(app: Application) {
-  const { BIGINT, INTEGER, STRING } = app.Sequelize
+  const { INTEGER, STRING, DATE } = app.Sequelize
   const Resource = app.model.define('resource', {
     id: {
       type: INTEGER,
@@ -52,8 +52,8 @@ export default function(app: Application) {
       defaultValue: 1
     },
     create_time: {
-      type: BIGINT,
-      allowNull: false
+      type: DATE,
+      defaultValue: new Date()
     },
     is_deleted: {
       type: INTEGER,

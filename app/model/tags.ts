@@ -20,7 +20,6 @@ export default function(app: Application) {
     },
     create_time: {
       type: DATE,
-      allowNull: false,
       defaultValue: new Date()
     },
     is_deleted: {

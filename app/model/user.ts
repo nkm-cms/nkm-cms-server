@@ -1,7 +1,7 @@
 import { Application } from 'egg'
 
 export default function(app: Application) {
-  const { STRING, BIGINT, INTEGER } = app.Sequelize
+  const { STRING, INTEGER, DATE } = app.Sequelize
 
   const User = app.model.define('users', {
     id: {
@@ -31,8 +31,14 @@ export default function(app: Application) {
       defaultValue: 'test',
       allowNull: false
     },
-    registered_time: BIGINT,
-    last_login_time: BIGINT,
+    registered_time: {
+      type: DATE,
+      defaultValue: new Date()
+    },
+    last_login_time: {
+      type: DATE,
+      defaultValue: new Date()
+    },
     status: {
       type: INTEGER,
       defaultValue: 1

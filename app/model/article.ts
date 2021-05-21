@@ -1,7 +1,7 @@
 import { Application } from 'egg'
 
 export default function(app: Application) {
-  const { BIGINT, INTEGER, STRING, TEXT } = app.Sequelize
+  const { BIGINT, INTEGER, STRING, TEXT, DATE } = app.Sequelize
   const Article = app.model.define('article', {
     id: {
       type: BIGINT,
@@ -41,8 +41,8 @@ export default function(app: Application) {
       defaultValue: ''
     },
     create_time: {
-      type: BIGINT,
-      defaultValue: Date.now()
+      type: DATE,
+      defaultValue: new Date()
     },
     status: {
       type: INTEGER,
