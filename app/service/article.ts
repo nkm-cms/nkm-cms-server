@@ -7,9 +7,10 @@ interface CreateOption {
   content: string;
   tags: string;
   summary: string;
-  status?: number;
+  status: number;
   categoryId: number;
   thumbnail: string;
+  top: number;
 }
 
 export default class Article extends Service {
@@ -32,7 +33,8 @@ export default class Article extends Service {
     summary,
     status = 1,
     categoryId,
-    thumbnail
+    thumbnail,
+    top
   }: CreateOption) {
     const { ctx, app } = this
 
@@ -62,7 +64,8 @@ export default class Article extends Service {
       category_id: categoryId,
       user_id: userId,
       thumbnail,
-      create_time: Date.now()
+      top,
+      create_time: new Date()
     }
 
     if (id) delete option.create_time
@@ -93,12 +96,16 @@ export default class Article extends Service {
         'is_deleted',
         'create_time',
         'category_id',
-        'thumbnail'
+        'thumbnail',
+        'views',
+        'top'
       ],
       where: {
         is_deleted: 0
       },
-      order: [['create_time', 'desc']],
+      order: [
+        ['create_time', 'desc']
+      ],
       raw: true
     })
   }
@@ -115,7 +122,8 @@ export default class Article extends Service {
         'is_deleted',
         'create_time',
         'category_id',
-        'thumbnail'
+        'thumbnail',
+        'top'
       ],
       include: [{
         model: this.ctx.model.User,

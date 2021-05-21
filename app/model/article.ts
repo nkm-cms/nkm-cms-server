@@ -50,6 +50,15 @@ export default function(app: Application) {
       defaultValue: 1,
       comment: '0: 草稿；1：已发布'
     },
+    top: {
+      type: INTEGER,
+      defaultValue: 0,
+      comment: '0：不置顶；1：置顶'
+    },
+    views: {
+      type: INTEGER,
+      defaultValue: 0
+    },
     is_deleted: {
       type: INTEGER,
       allowNull: false,
