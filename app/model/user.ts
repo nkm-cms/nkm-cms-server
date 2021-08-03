@@ -1,4 +1,5 @@
 import { Application } from 'egg'
+import { DEFAULT_RULE_CODE } from '../settings'
 
 export default function(app: Application) {
   const { STRING, INTEGER, DATE } = app.Sequelize
@@ -28,7 +29,7 @@ export default function(app: Application) {
     },
     role: {
       type: STRING(50),
-      defaultValue: 'test',
+      defaultValue: DEFAULT_RULE_CODE,
       allowNull: false
     },
     registered_time: {
