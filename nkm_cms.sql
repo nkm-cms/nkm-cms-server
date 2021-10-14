@@ -22,27 +22,21 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `nkm_article`;
 CREATE TABLE `nkm_article` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `thumbnail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tags` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `summary` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `user_id` bigint unsigned NOT NULL,
-  `category_id` bigint unsigned NOT NULL,
-  `status` int unsigned NOT NULL DEFAULT '1' COMMENT '0: 草稿；1：已发布',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `thumbnail` varchar(255) NOT NULL,
+  `content` longtext CHARACTER SET utf8mb4 NOT NULL,
+  `tags` varchar(200) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `summary` varchar(300) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `user_id` bigint(20) unsigned NOT NULL,
+  `category_id` bigint(20) unsigned NOT NULL,
+  `status` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '0: 草稿；1：已发布',
+  `views` int(11) NOT NULL DEFAULT '0' COMMENT '浏览量',
+  `top` int(11) NOT NULL DEFAULT '0' COMMENT '0：不置顶；1：置顶',
   `create_time` datetime NOT NULL,
-  `is_deleted` int unsigned NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of nkm_article
--- ----------------------------
-BEGIN;
-INSERT INTO `nkm_article` VALUES (1, '关于nkm-cms内容管理系统的介绍', '/api/nkm-cms/readfile?path=/upload/2021/01/editor/20210102111424749502.png', '<p style=\"text-align:center\"><strong style=\"font-size:18px\">nkm-cms内容管理系统基础框架</strong></p><p style=\"text-align:center;font-size:14px\">作者：轩陌</p><p style=\"text-align:left;text-indent:2em;font-size:14px\">在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这块一直没有找到一个比较好用的，CKEditor比较重，UEditor官方不维护，各种原因不爽，其他的也有做尝试，但是感觉并不是自己想要的，后边有了解到textbus这个编辑器，也就是现在的这个，尝试了一下还不错，暂时先用着，目前暂时没有发现什么特别大的问题。</p><p style=\"text-align:left;text-indent:2em;font-size:14px\">关于这套内容管理系统的后续还需要开发的功能有：站点设置、文章内容里上传的图片做未使用的删除功能、文章增加版本历史记录、文章关联到用户权限、前端展示页面如果有好的设计会做一版对应的博客，嗯，目前就这个打算。<br></p><p style=\"text-align:left;text-indent:2em;font-size:14px\">nkm的命名由来：n取的是nodejs的首字母，k是取的koa2的首字母，m取的是mysql的首字母，所以就有了<u><strong>nkm-admin</strong></u>、<u><strong>nkm-cms</strong></u>的命名，目前几个仓库的介绍如下：</p><table><tbody><tr><td>仓库名<br></td><td>介绍<br></td><td>仓库地址<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">🔨nkm-server-ts</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统</span>基础框架（服务端），使用Eggjs重构的后端，技术栈：Eggjs+mysql+redis<br></td><td>https://github.com/nkm-admin/nkm-server-ts<br></td></tr><tr><td>🔨nkm-web<br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">后台管理系统基础</span>框架（前端），技术栈：Vuejs+Element-UI<br></td><td>https://github.com/nkm-admin/nkm-web<br></td></tr><tr><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">nkm-cms-server</span><br></td><td><span style=\"font-family:&quot;PingFang SC&quot;;color:rgb(0, 0, 0);font-size:medium\">基于nkm-server-ts实现的内容管理系统（服务端），目前只开发了栏目管理、文章管理，后续的功能还在开发中</span><br></td><td>https://github.com/nkm-admin/nkm-cms-server<br></td></tr><tr><td>nkm-cms-web<br></td><td>基于nkm-web实现的内容管理系统（前端）<br></td><td>https://github.com/nkm-admin/nkm-cms<br></td></tr><tr><td>nkm-web-template<br></td><td>前端的基础模版，不带任何权限<br></td><td>https://github.com/nkm-admin/nkm-web-template<br></td></tr></tbody></table><p><br></p><p><br></p>', '[]', 'nkm-cms内容管理系统基础框架\n\n作者：轩陌\n\n在学了Node.js一直想用Node.js写一版博客，一直没有实现，因为没有时间，又不想在用现在的WordPress那套主题风格，苦于设计页面真的太难了，也就一直搁下了，所以目前也就只有做一套前后端的基础开发框架，之前使用koa2实现的那一版后台管理系统基础框架，由于是第一次使用nodejs做后端，有很多不完善的地方，也是属于一个学习的过程，后边了解到Egg这个框架，感觉还不错，学了起来，将之前的koa2版后端进行了重构，使用了ts，数据库查询不在使用sql语句查询，改用了ORM框架，后端算是有了一个稳定的1.0版本，但是前端在富文本编辑器这', 1, 1, 1, '2019-08-14 12:54:50', 0);
-INSERT INTO `nkm_article` VALUES (2, '视频测试', '', '<p><video src=\"http://cms-test.xuanmo.xin/api/nkm-cms/readfile?path=/upload/2021/01/editor/20210114170725264999.mp4\" controls style=\"width:293px;height:520px\"></video><br></p>', '[]', '', 1, 2, 1, '2019-08-14 12:54:50', 0);
-COMMIT;
+  `is_deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0：未删除；1：已删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for nkm_category
