@@ -14,6 +14,7 @@ export default class extends Service {
     const { ctx, app } = this
     // 存放文件的目录
     const rootDir = path.join(__dirname, '../public/upload')
+    !fs.existsSync(rootDir) && fs.mkdirSync(rootDir)
 
     // 上传类型
     const type = ctx.request.body.type
