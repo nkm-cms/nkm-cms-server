@@ -12,7 +12,7 @@ export default class BaseController extends Controller {
     return {
       ...this.ctx.responseStruc(),
       ...response,
-      data: objectKeyToCamelCase(response.data, 'dataValues')
+      data: objectKeyToCamelCase(response.data, 'dataValues', ['\\.'])
     }
   }
 
