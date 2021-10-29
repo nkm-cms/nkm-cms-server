@@ -1,10 +1,10 @@
 import { createHash } from 'crypto'
 import * as getFileMimeType from '@xuanmo/mime-types'
 import { SECRET_KEY } from '../settings'
-import { isObject, toUnderline } from '@xuanmo/javascript-utils'
+import * as utils from '@xuanmo/javascript-utils'
 
 export default {
-  isObject,
+  ...utils,
 
   getFileMimeType,
 
@@ -22,7 +22,7 @@ export default {
   objectKeyToUnderline: (obj: object): object => {
     const result = {}
     for (const [_key, _value] of Object.entries(obj)) {
-      result[toUnderline(_key)] = _value
+      result[utils.toUnderline(_key)] = _value
     }
     return result
   },
