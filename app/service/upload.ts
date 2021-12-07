@@ -30,7 +30,7 @@ export default class extends Service {
     const dirType = ['account', 'editor']
     const fileType = dirType.indexOf(type) === -1 ? '' : type
 
-    let writeDir = ''
+    let writeDir: string
 
     // 判断目录是否存在
     !fs.existsSync(rootDir) && fs.mkdirSync(rootDir)
@@ -121,7 +121,9 @@ export default class extends Service {
     } catch (err) {
       ctx.logger.warn(`文件读取失败：${ctx.url}`)
     }
-    ctx.attachment(decodeURIComponent(ctx.request.query.path.split('/').reverse()[0]))
+    ctx.attachment(decodeURIComponent(ctx.request.query.path.split('/').reverse()[0]), {
+      type: 'inline'
+    })
     ctx.body = stream
   }
 }
