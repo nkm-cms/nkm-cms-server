@@ -62,7 +62,7 @@ export default class extends Service {
       // 创建可写流
       const upStream = fs.createWriteStream(`${writeDir}/${isMedia ? file.filename : filename}`)
       const relativeAddress = isMedia ? path.join('/upload', mediaUploadPath, file.filename) : `/upload/${year}/${month}/${fileType}/${filename}`
-      const remoteAddress = `${ROUTER_PREFIX}/readfile?path=${relativeAddress}`
+      const remoteAddress = `${ROUTER_PREFIX}/readFile?path=${relativeAddress}`
 
       // 可读流通过管道写入可写流
       reader.pipe(upStream)
@@ -100,11 +100,11 @@ export default class extends Service {
         start = Number(start)
         end = Number(end) ? Number(end) : start + 999999
         end = end > fileSize - 1 ? fileSize - 1 : end
-        const chunksize = (end - start) + 1
+        const chunkSize = (end - start) + 1
         ctx.set({
           'Content-Range': `bytes ${start}-${end}/${fileSize}`,
           'Accept-Ranges': 'bytes',
-          'Content-Length': chunksize + '',
+          'Content-Length': chunkSize + '',
           'Content-Type': 'application/octet-stream'
         })
         ctx.status = 206
