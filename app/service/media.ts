@@ -6,7 +6,7 @@ import { ROUTER_PREFIX } from '../settings'
 export default class Media extends Service {
   readonly rootDir = path.join(__dirname, '../public/upload')
 
-  private isFile(file: string): boolean {
+  private static isFile(file: string): boolean {
     const stats = fs.statSync(file)
     return stats.isFile()
   }
@@ -15,11 +15,11 @@ export default class Media extends Service {
     const { ctx } = this
     try {
       // 过滤不需要读取的文件
-      const ISNORE_FILE = ['.DS_Store']
+      const IGNORE_FILES = ['.DS_Store']
 
       const filePath = path.join(this.rootDir, directory)
       let files = fs.readdirSync(filePath)
-      files = files.filter((item: any) => !ISNORE_FILE.includes(item))
+      files = files.filter((item: any) => !IGNORE_FILES.includes(item))
       return files.map((item: any) => {
         const _stat = fs.statSync(path.join(filePath, item))
         item = {
@@ -28,7 +28,7 @@ export default class Media extends Service {
           createTime: _stat.birthtime,
           size: ctx.helper.fileSizeFormatter(_stat.size),
           type: ctx.helper.getFileMimeType(item),
-          url: _stat.isDirectory() ? '' : `${ROUTER_PREFIX}/readfile?path=${filePath.replace(this.rootDir, '/upload')}/${item}`
+          url: _stat.isDirectory() ? '' : `${ROUTER_PREFIX}/readFile?path=${filePath.replace(this.rootDir, '/upload')}/${item}`
         }
         return item
       }).sort((a, b) => b.isDirectory - a.isDirectory)
@@ -65,6 +65,6 @@ export default class Media extends Service {
 
   public deleteFileOrDirectory() {
     const filePath = path.join(this.rootDir, this.ctx.request.body.path.replace('/upload', ''))
-    return this.isFile(filePath) ? this.deleteFile(filePath) : this.deleteDirectory(filePath)
+    return Media.isFile(filePath) ? this.deleteFile(filePath) : this.deleteDirectory(filePath)
   }
 }
