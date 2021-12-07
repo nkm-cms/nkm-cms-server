@@ -228,8 +228,8 @@ CREATE TABLE `nkm_users` (
 -- Records of nkm_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `nkm_users` VALUES (1, 'admin', 'eea325bb46d15a237ef89e2282afe077', '系统管理员', 'me@example.com', 'systemAdministrator', '2019-08-14 12:54:50', '2021-05-21 17:59:43', 1, 1, '/api/nkm-cms/readfile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 0);
-INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', '2019-08-14 12:54:50', '2019-08-14 12:54:50', 1, 0, '/api/nkm-admin/readfile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (1, 'admin', 'eea325bb46d15a237ef89e2282afe077', '系统管理员', 'me@example.com', 'systemAdministrator', '2019-08-14 12:54:50', '2021-05-21 17:59:43', 1, 1, '/api/nkm-cms/readFile?path=/upload/2020/12/account/20201229120252134549.JPG', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 0);
+INSERT INTO `nkm_users` VALUES (2, 'test', 'ceb8baef5116ea00dced818d38af6cfb', '测试人员1', 'm@example.com', 'articleManager', '2019-08-14 12:54:50', '2019-08-14 12:54:50', 1, 0, '/api/nkm-admin/readFile?path=/upload/2020/06/account/20200616171102099796.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', 0);
 INSERT INTO `nkm_users` VALUES (3, 'testAdmin', 'ceb8baef5116ea00dced818d38af6cfb', '测试管理员', 'me@example.com', 'testAdmin,articleManager', '2019-08-14 12:54:50', '2019-08-14 12:54:50', 1, 0, '/img/Fruit-1.ec29dc10.png', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36', 0);
 COMMIT;
 

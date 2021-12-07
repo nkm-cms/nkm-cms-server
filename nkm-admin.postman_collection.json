@@ -784,12 +784,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/readfile?path=/upload/2020/06/20200616141226631416.png",
+					"raw": "{{url}}/readFile?path=/upload/2020/06/20200616141226631416.png",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"readfile"
+						"readFile"
 					],
 					"query": [
 						{

@@ -21,7 +21,7 @@ export const IGNORE_LOGIN_ROUTES = [
   new RegExp(`${ROUTER_PREFIX}/login$`),
   new RegExp(`${ROUTER_PREFIX}/login-out$`),
   new RegExp(`${ROUTER_PREFIX}/captcha(\\?.*)?$`),
-  new RegExp(`${ROUTER_PREFIX}/readfile(\\?.*)?$`),
+  new RegExp(`${ROUTER_PREFIX}/readFile(\\?.*)?$`),
   new RegExp(`${ROUTER_PREFIX}/system/user/registered`)
 ]
 
