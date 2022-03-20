@@ -8,7 +8,7 @@ export default class extends BaseController {
 
   public async getList() {
     const { ctx } = this
-    const { rows: data, count } = await this.service.article.getList(ctx.conversionPagination(ctx.query))
+    const { rows: data, count } = await this.service.article.getList(ctx.conversionPagination(ctx.query as any))
     ctx.body = this.success({
       data,
       count

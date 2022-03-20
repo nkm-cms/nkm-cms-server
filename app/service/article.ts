@@ -38,7 +38,7 @@ export default class Article extends Service {
   }: CreateOption) {
     const { ctx, app } = this
 
-    const userId = await this.app.redis.hget(ctx.request.header.token, 'id')
+    const userId = await this.app.redis.hget(ctx.request.headers.token, 'id')
 
     // 保存之前先查出当前文章信息，并判断该文章是否为当前用的文章
     if (id) {
@@ -142,8 +142,8 @@ export default class Article extends Service {
   }
 
   public async del(id: number) {
-    const userId = await this.app.redis.hget(this.ctx.request.header.token, 'id')
-    const isSystemAdmin = await this.app.redis.hget(this.ctx.request.header.token, 'isSystemAdmin')
+    const userId = await this.app.redis.hget(this.ctx.request.headers.token, 'id')
+    const isSystemAdmin = await this.app.redis.hget(this.ctx.request.headers.token, 'isSystemAdmin')
 
     // 保存之前先查出当前文章信息，并判断该文章是否为当前用的文章
     const article: any = await this._queryTheExistenceById(id)

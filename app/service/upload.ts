@@ -94,7 +94,7 @@ export default class extends Service {
       ctx.logger.warn('视频[range]', ctx.get('range'), ctx.request.headers)
       if (range) {
         // 获取范围的开始和结束
-        let { start, end } = (/bytes=(?<start>\d+)-(?<end>\d+)?/.exec(range) || {}).groups || {
+        let { start, end } = (/bytes=(?<start>\d+)-(?<end>\d+)?/.exec(range as string) || {}).groups || {
           start: 0,
           end: 0
         }

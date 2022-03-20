@@ -14,7 +14,7 @@ export default class extends BaseController {
         data: await this.service.tags.getAllList()
       })
     } else {
-      const { rows: data, count } = await this.service.tags.getList(ctx.conversionPagination(ctx.query))
+      const { rows: data, count } = await this.service.tags.getList(ctx.conversionPagination(ctx.query as any))
       ctx.body = this.success({
         data,
         count
