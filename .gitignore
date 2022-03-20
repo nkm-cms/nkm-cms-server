@@ -20,4 +20,5 @@ test/**/*.map
 config/**/*.map
 
 app/public/upload
-typings/
+typings/app
+typings/config
