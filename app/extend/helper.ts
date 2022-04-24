@@ -1,19 +1,12 @@
-import { createHash } from 'crypto'
+import { md5 } from '../utils/crypto'
 import * as getFileMimeType from '@xuanmo/mime-types'
-import { SECRET_KEY } from '../settings'
 import * as utils from '@xuanmo/javascript-utils'
 
 export default {
+  md5,
   ...utils,
 
   getFileMimeType,
-
-  /**
-   * md5加密
-   * @param str 需要加密的字符串
-   * @param salt 加盐
-   */
-  md5: (str: string, salt = true): string => createHash('md5').update(`${str}${salt ? SECRET_KEY : ''}`).digest('hex'),
 
   /**
    * 将对象的key如果为驼峰命名转换为下划线

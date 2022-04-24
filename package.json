@@ -8,7 +8,7 @@
     "declarations": true
   },
   "scripts": {
-    "bootstrap:test": "yarn --registry=https://registry.npmjs.org && yarn tsc && yarn start",
+    "bootstrap:test": "yarn --registry=https://registry.npmmirror.com/ && yarn tsc && yarn start",
     "start": "egg-scripts start --daemon --title=egg-server-nkm-cms --port=3101",
     "stop": "egg-scripts stop --title=egg-server-nkm-cms",
     "dev": "egg-bin dev",
@@ -26,6 +26,7 @@
   "dependencies": {
     "@xuanmo/javascript-utils": "^0.0.22",
     "@xuanmo/mime-types": "^0.0.2",
+    "crypto-js": "^4.1.1",
     "egg": "^2.29.1",
     "egg-redis": "^2.4.0",
     "egg-scripts": "^2.6.0",
