@@ -4,7 +4,8 @@ export default () => {
   const config: PowerPartial<EggAppConfig> = {}
 
   config.sequelize = {
-    password: ''
+    password: '',
+    database: 'nkm_cms'
   }
 
   return config
